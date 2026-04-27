@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>임우철 - Product Manager Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #4f46e5;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #4f46e5;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            background: #eef2ff;
+            color: #4f46e5;
+            border: 1px solid #c7d2fe;
+            transition: all 0.2s ease;
+        }
+
+        .skill-badge:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link.active {
+            color: #4f46e5;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #4f46e5;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                padding-left: 24px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <!-- Navigation -->
+    <nav id="nav" class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm transition-shadow">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-indigo-600">
+                    IM
+                </div>
+                <div id="nav-menu" class="hidden md:flex gap-8">
+                    <a href="#hero" class="nav-link active text-sm font-medium">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium">About</a>
+                    <a href="#skills" class="nav-link text-sm font-medium">Skills</a>
+                    <a href="#experience" class="nav-link text-sm font-medium">Experience</a>
+                    <a href="#projects" class="nav-link text-sm font-medium">Projects</a>
+                    <a href="#awards" class="nav-link text-sm font-medium">Awards</a>
+                    <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+                </div>
+                <button id="hamburger" class="md:hidden text-slate-600 text-2xl">
+                    <span>☰</span>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden mt-4 pb-4">
+                <div class="flex flex-col gap-3">
+                    <a href="#hero" class="nav-link text-sm font-medium block">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium block">About</a>
+                    <a href="#skills" class="nav-link text-sm font-medium block">Skills</a>
+                    <a href="#experience" class="nav-link text-sm font-medium block">Experience</a>
+                    <a href="#projects" class="nav-link text-sm font-medium block">Projects</a>
+                    <a href="#awards" class="nav-link text-sm font-medium block">Awards</a>
+                    <a href="#contact" class="nav-link text-sm font-medium block">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-indigo-50 py-16 px-4">
+        <div class="max-w-5xl mx-auto w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+                <!-- Profile Info (모바일에서 먼저 표시) -->
+                <div class="reveal order-1 md:order-2">
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-2">
+                        임우철
+                    </h1>
+                    <p class="text-lg sm:text-2xl text-indigo-600 font-semibold mb-4 sm:mb-6">
+                        Product Manager
+                    </p>
+                    <p class="text-base sm:text-lg text-slate-600 mb-4 sm:mb-6 leading-relaxed">
+                        Seoul, South Korea
+                    </p>
+                    <p class="text-base sm:text-xl text-slate-700 font-medium italic mb-6 sm:mb-8 leading-relaxed border-l-4 border-indigo-600 pl-4">
+                        "억지가 아닌 주도적 몰입으로,<br>좋은 퍼포먼스를 꾸준히 만들어 간다."
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="tel:010-9551-9208"
+                           class="px-5 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors text-sm sm:text-base">
+                            📞 Call
+                        </a>
+                        <a href="mailto:imwoothul@gmail.com"
+                           class="px-5 py-3 bg-slate-200 text-slate-900 rounded-lg font-medium hover:bg-slate-300 transition-colors text-sm sm:text-base">
+                            📧 Email
+                        </a>
+                    </div>
+                </div>
+                <!-- Profile Image (모바일에서 두 번째 표시) -->
+                <div class="reveal flex justify-center order-2 md:order-1 md:justify-end">
+                    <img src="profile.jpg" alt="임우철 프로필 사진"
+                         class="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full object-cover object-top shadow-2xl ring-4 ring-indigo-100">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-14 sm:py-20 px-4 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center reveal">About Me</h2>
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 reveal">
+                안녕하세요, SW 제품을 중심으로 기획부터 개발, 출시까지 전 과정을 주도적으로 경험해 온 준비된 PM 임우철입니다.
+            </p>
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 reveal">
+                소프트웨어와 임베디드 제품 개발 프로젝트를 다수 리딩하며, 기술적 이해력을 기반으로 한 제품 전략 수립, 개발 프로세스 운영, 신규 사업 및 기능 기획 등 폭넓은 영역에서 실질적인 성과를 만들어 왔습니다.
+            </p>
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed reveal">
+                특히 사용자 경험과 비즈니스 목표를 균형 있게 고려하며 문제를 정의하고 해결하는 데 강점이 있습니다. 더 큰 임팩트를 만들 수 있는 환경에서 도전과 성장의 다음 단계를 찾고 있습니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-14 sm:py-20 px-4 bg-slate-100">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-10 sm:mb-12 text-center reveal">Skills & Tools</h2>
+            <div class="flex flex-wrap gap-3 sm:gap-4 justify-center reveal">
+                <span class="skill-badge">📊 Notion</span>
+                <span class="skill-badge">🔧 Jira</span>
+                <span class="skill-badge">🎨 Figma</span>
+                <span class="skill-badge">🎯 Miro</span>
+                <span class="skill-badge">☁️ Google Workspace</span>
+                <span class="skill-badge">📈 Excel</span>
+                <span class="skill-badge">🗄️ SQL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-14 sm:py-20 px-4 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-10 sm:mb-12 text-center reveal">Experience</h2>
+            <div class="relative pl-8 border-l-2 border-indigo-200">
+                <!-- Current Position -->
+                <div class="timeline-item reveal">
+                    <div class="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900">(주)핏투게더</h3>
+                                <p class="text-indigo-600 font-semibold">Product Manager</p>
+                            </div>
+                            <span class="text-xs font-mono text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full self-start">
+                                2024.06 - 현재
+                            </span>
+                        </div>
+                        <p class="text-slate-600 mb-3 text-sm sm:text-base">
+                            GPS Video Fusion 기술을 활용한 분석 솔루션의 핵심 기능 정의 및 PM 총괄
+                        </p>
+                        <ul class="text-sm text-slate-500 space-y-1">
+                            <li>• AI 기반 선수 검출, 헝가리안/우메야마 알고리즘 기반 좌표 정합</li>
+                            <li>• Qatar Aspire 및 K리그 유스팀 기반 글로벌 베타 검증 운영</li>
+                            <li>• 제품 기획 → 개발·협업 조율 → 베타 운영 → 기능 고도화까지 전 라이프사이클 리드</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bluegreen Lab -->
+                <div class="timeline-item reveal">
+                    <div class="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900">주식회사 블루그린랩</h3>
+                                <p class="text-indigo-600 font-semibold">대표 / CEO</p>
+                            </div>
+                            <span class="text-xs font-mono text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full self-start">
+                                2023.05 - 2024.07
+                            </span>
+                        </div>
+                        <p class="text-slate-600 mb-3 text-sm sm:text-base">
+                            스마트워치를 전문 다이빙 컴퓨터로 확장하는 제품 기획 및 개발 총괄
+                        </p>
+                        <ul class="text-sm text-slate-500 space-y-1">
+                            <li>• 제품 컨셉 기획, 기능 스펙 정의, MVP부터 정식 버전까지 로드맵 설계</li>
+                            <li>• 정부과제 3건 수행 (기술커넥트, 융합SW, 제주 해양수산)</li>
+                            <li>• 프로토타입 제작, 기술 검증, 베타 사용성 테스트 운영</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Artisan&Ocean -->
+                <div class="timeline-item reveal">
+                    <div class="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900">(주)아티슨앤오션</h3>
+                                <p class="text-indigo-600 font-semibold">기획 및 Product Manager</p>
+                            </div>
+                            <span class="text-xs font-mono text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full self-start">
+                                2021.01 - 2024.04
+                            </span>
+                        </div>
+                        <p class="text-slate-600 mb-3 text-sm sm:text-base">
+                            AI 기반 수중 생물 검출 플랫폼 및 수중 촬영 솔루션 시리즈 PM
+                        </p>
+                        <ul class="text-sm text-slate-500 space-y-1">
+                            <li>• DIVERSE: AI 수중 생물 검출 및 다이빙 커뮤니케이션 플랫폼 기획</li>
+                            <li>• Pro Controller: 수중 스마트폰 DSLR 하우징 + 제어 솔루션 PM</li>
+                            <li>• Universal Lite/Pro/mini: 스노클링~전문 다이빙용 하우징 시리즈</li>
+                            <li>• 킥스타터 451% 달성, 와디즈 1232% 달성</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Earlier Positions -->
+                <div class="timeline-item reveal">
+                    <div class="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900">진짜마켓</h3>
+                                <p class="text-indigo-600 font-semibold">공동대표</p>
+                            </div>
+                            <span class="text-xs font-mono text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full self-start">
+                                2019.03 - 2020.07
+                            </span>
+                        </div>
+                        <p class="text-slate-600 text-sm sm:text-base">B2B 커머스 기획 및 판촉물 공급 사업 운영</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900">삼일공업고등학교</h3>
+                                <p class="text-indigo-600 font-semibold">기업전담관</p>
+                            </div>
+                            <span class="text-xs font-mono text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full self-start">
+                                2017.11 - 2019.02
+                            </span>
+                        </div>
+                        <p class="text-slate-600 text-sm sm:text-base">학생 진로 설계 및 기업 연계 취업 매칭</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-14 sm:py-20 px-4 bg-slate-100">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-10 sm:mb-12 text-center reveal">Key Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Project 1 -->
+                <div class="project-card reveal bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                    <div class="text-4xl mb-4">⚽</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">GPS Video Fusion</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        AI 기반 선수 검출과 GPS 데이터의 완벽한 동기화를 통한 고급 피지컬 분석 솔루션
+                    </p>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+                        Fitogether
+                    </span>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card reveal bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                    <div class="text-4xl mb-4">⌚</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Smart Dive Computer</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        스마트워치를 전문 다이빙 컴퓨터로 확장하는 하드웨어 + 소프트웨어 통합 솔루션
+                    </p>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+                        Bluegreen Lab
+                    </span>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card reveal bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                    <div class="text-4xl mb-4">🐠</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">DIVERSE</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        AI 기반 수중 생물 자동 검출 및 다이버 커뮤니케이션 통합 플랫폼
+                    </p>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+                        Artisan&Ocean
+                    </span>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card reveal bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                    <div class="text-4xl mb-4">📷</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Pro Controller</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        스마트폰을 수중 DSLR로 만드는 프로페셔널 하우징 + 원격 제어 솔루션
+                    </p>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+                        Kickstarter ⭐
+                    </span>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card reveal bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                    <div class="text-4xl mb-4">🤿</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Universal Series</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        스노클링부터 전문 다이빙까지 모든 수중 활동을 위한 하우징 시리즈
+                    </p>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+                        Lite / Pro / mini
+                    </span>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card reveal bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Crowdfunding Success</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        킥스타터 451%, 와디즈 1232% 달성 — 시장 검증된 제품
+                    </p>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+                        다중 성공
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Patents Section -->
+    <section id="awards" class="py-14 sm:py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-10 sm:mb-12 text-center reveal">Awards & Patents</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Awards -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 reveal">🏆 Awards</h3>
+                    <div class="space-y-4">
+                        <div class="reveal bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-4 sm:p-5 border border-indigo-100">
+                            <p class="font-semibold text-slate-900 mb-1">국방 Startup 챌린지 우승</p>
+                            <p class="text-sm text-slate-600">2016년 | 해군참모총장 표창</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-4 sm:p-5 border border-indigo-100">
+                            <p class="font-semibold text-slate-900 mb-1">MBC 도전 발명왕 우승</p>
+                            <p class="text-sm text-slate-600">2013년</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-4 sm:p-5 border border-indigo-100">
+                            <p class="font-semibold text-slate-900 mb-1">스타트업 오디션 은상</p>
+                            <p class="text-sm text-slate-600">2013년 | 미래창조과학부 장관 표창</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-4 sm:p-5 border border-indigo-100">
+                            <p class="font-semibold text-slate-900 mb-1">도전 K-Startup 최종 40인 선발</p>
+                            <p class="text-sm text-slate-600">2016년</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-4 sm:p-5 border border-indigo-100">
+                            <p class="font-semibold text-slate-900 mb-1">TEDxKoreaTechU 강연</p>
+                            <p class="text-sm text-slate-600">2013년 | "Light in darkness, save the Life"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patents -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 reveal">📜 Patents</h3>
+                    <div class="space-y-4">
+                        <div class="reveal bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-5 border border-blue-100">
+                            <p class="font-semibold text-slate-900 mb-1">국제 특허 (PCT)</p>
+                            <p class="text-sm text-slate-600 font-mono break-all">PCT/KR2022/016213</p>
+                            <p class="text-xs text-slate-500 mt-2">수중 방수 장치</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-5 border border-blue-100">
+                            <p class="font-semibold text-slate-900 mb-1">국내 특허 (등록)</p>
+                            <p class="text-sm text-slate-600 font-mono break-all">1027602730000</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-5 border border-blue-100">
+                            <p class="font-semibold text-slate-900 mb-1">국내 특허 (등록)</p>
+                            <p class="text-sm text-slate-600 font-mono break-all">10-1502483</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-5 border border-blue-100">
+                            <p class="font-semibold text-slate-900 mb-1">국내 특허 (출원)</p>
+                            <p class="text-sm text-slate-600 font-mono break-all">10-2012-0064840</p>
+                        </div>
+                        <div class="reveal bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-5 border border-blue-100">
+                            <p class="font-semibold text-slate-900 mb-1">국내 특허 (출원)</p>
+                            <p class="text-sm text-slate-600 font-mono break-all">10-2012-0064820</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-14 sm:py-20 px-4 bg-slate-100">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-10 sm:mb-12 text-center reveal">Education</h2>
+            <div class="space-y-4">
+                <div class="reveal bg-white rounded-xl p-5 sm:p-6 border border-slate-200">
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-1">한경국립대학교</h3>
+                    <p class="text-indigo-600 font-medium mb-2">식품생물공학과</p>
+                    <p class="text-slate-600 text-sm">2014.03 - 2017.07 (중퇴)</p>
+                </div>
+                <div class="reveal bg-white rounded-xl p-5 sm:p-6 border border-slate-200">
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-1">삼일공업고등학교</h3>
+                    <p class="text-indigo-600 font-medium mb-2">졸업</p>
+                    <p class="text-slate-600 text-sm">2011.03 - 2013.12</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-14 sm:py-20 px-4 bg-slate-900 text-white">
+        <div class="max-w-3xl mx-auto text-center reveal">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Get in Touch</h2>
+            <p class="text-base sm:text-xl text-slate-300 mb-8">
+                새로운 기회와 협력에 항상 열려있습니다.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-10 sm:mb-12">
+                <a href="mailto:imwoothul@gmail.com"
+                   class="px-6 py-4 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base break-all sm:break-normal">
+                    📧 imwoothul@gmail.com
+                </a>
+                <a href="tel:010-9551-9208"
+                   class="px-6 py-4 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
+                    📞 010-9551-9208
+                </a>
+            </div>
+            <p class="text-slate-400 text-sm">
+                © 2024 IM WOOCHEOL | Product Manager<br>
+                Seoul, South Korea
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // 모바일 메뉴 토글
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 모바일 메뉴 링크 클릭 시 닫기
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 앵커 링크 스무스 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 스크롤 시 내비게이션 그림자
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 활성 내비 링크 하이라이트
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            threshold: 0.4,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // 스크롤 reveal 애니메이션
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.15,
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(element => {
+            revealObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
